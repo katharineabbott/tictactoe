@@ -1,0 +1,143 @@
+body {
+    padding-top: 25px;
+}
+
+.player-name {
+    text-align: center;
+}
+
+.player-pieces {
+    text-align: center;
+}
+
+.countdown {
+    text-align: center;
+}
+
+.player-turn {
+    text-align: center;
+}
+
+.game-board {
+    text-align: center;
+}
+
+.score {
+    text-align: center;
+}
+
+.reset-score-button {
+    text-align: center;
+}
+
+.game-play {
+    padding-bottom: 25px;
+}
+
+.game-board {
+    padding-top: 25px;
+}
+
+.game-board-top-left {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-top-middle {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-top-right {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-middle-left {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-center {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-middle-right {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-bottom-left {
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-bottom-middle {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    height: 120px;
+    width: 120px;
+}
+
+.game-board-bottom-right {
+    height: 120px;
+    width: 120px;
+}
+
+table {
+    width: 60%;
+    margin: 0 auto;
+}
+
+td {
+    width: 33.333%;
+}
+
+td:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+
+.button {
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: grey;
+}
+
+.score {
+    padding-bottom: 10px;
+}
