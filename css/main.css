@@ -4,22 +4,39 @@ body {
 
 .player-name {
     text-align: center;
+    font-size: 14pt;
+    text-decoration: underline;
 }
 
 .player-pieces {
+    padding-top: 20px;
     text-align: center;
+    font-size: 64pt;
+}
+
+.player-x-piece {
+    display: inline-block;
+}
+
+.player-o-piece {
+    display: inline-block;
 }
 
 .countdown {
     text-align: center;
+    font-size: 18pt;
 }
 
 .player-turn {
     text-align: center;
+    font-size: 14pt;
+    color: teal;
+    /*have text flash between black and teal when it's players turn if possible*/
 }
 
 .game-board {
     text-align: center;
+    font-size: 64pt;
 }
 
 .score {
@@ -108,7 +125,7 @@ body {
 }
 
 table {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
 }
 
