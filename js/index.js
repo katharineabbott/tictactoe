@@ -22,6 +22,8 @@
    "game-board-bottom-right" : "",
  }
 
+ 
+
 
 function draw(currentGame) {
   $(".game-board-top-left").text(gameState["game-board-top-left"])
@@ -55,7 +57,14 @@ function draw(currentGame) {
 function update(player, cell){
   //1. update the board state to be the correct piece
   //2. change the player
-  gameState[cell] = "X"
+  if(gameState["player"]==1) {
+    gameState["player"] = 2;
+    gameState[cell] = "X"
+  } else {
+    gameState["player"] = 1
+    gameState[cell] = "O"
+  }
+
 }
 
 
