@@ -20,7 +20,9 @@
    "game-board-bottom-left" : "",
    "game-board-bottom-middle" : "",
    "game-board-bottom-right" : "",
-   "playerName":"Your Turn!"
+   "playerName":"Your Turn!",
+   "remainingXPiece":5,
+   "remainingOPiece":5
  }
 
  
@@ -37,6 +39,21 @@ function draw(currentGame) {
   $(".game-board-bottom-middle").text(gameState["game-board-bottom-middle"])
   $(".game-board-bottom-right").text(gameState["game-board-bottom-right"])
   $(".player-turn").text(gameState["playerName"])
+
+  var xPieceValue = gameState["remainingXPiece"]
+  $(".x-pieces").html("")
+  while (xPieceValue>0) {
+    $(".x-pieces").append('<div class="player-x-piece">X</div>')
+    xPieceValue = xPieceValue-1
+  }
+
+  var oPieceValue = gameState["remainingOPiece"]
+  $(".o-pieces").html("")
+  while (oPieceValue>0) {
+    $(".o-pieces").append('<div class="player-o-piece">O</div>')
+    oPieceValue = oPieceValue-1
+  }
+  
 }
 
 
@@ -64,10 +81,12 @@ function update(cell){
       gameState["player"] = 2;
       gameState[cell] = "X"
       gameState["playerName"] = "Opponent's Turn!"
+      gameState["remainingXPiece"] = gameState["remainingXPiece"] - 1
     } else {
       gameState["player"] = 1
       gameState[cell] = "O"
       gameState["playerName"] = "Your Turn!"
+      gameState["remainingOPiece"] = gameState["remainingOPiece"] - 1
     }
   }
 }
