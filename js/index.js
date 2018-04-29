@@ -18,8 +18,9 @@
    "game-board-center" : "",
    "game-board-middle-right" : "",
    "game-board-bottom-left" : "",
-   "game-board-bottm-middle" : "",
+   "game-board-bottom-middle" : "",
    "game-board-bottom-right" : "",
+   "playerName":"Your Turn!"
  }
 
  
@@ -33,8 +34,9 @@ function draw(currentGame) {
   $(".game-board-center").text(gameState["game-board-center"])
   $(".game-board-middle-right").text(gameState["game-board-middle-right"])
   $(".game-board-bottom-left").text(gameState["game-board-bottom-left"])
-  $(".game-board-bottm-middle").text(gameState["game-board-bottm-middle"])
+  $(".game-board-bottom-middle").text(gameState["game-board-bottom-middle"])
   $(".game-board-bottom-right").text(gameState["game-board-bottom-right"])
+  $(".player-turn").text(gameState["playerName"])
 }
 
 
@@ -54,56 +56,60 @@ function draw(currentGame) {
 <td class="game-board-bottom-right"></td>
 </tr> */
 
-function update(player, cell){
+function update(cell){
   //1. update the board state to be the correct piece
   //2. change the player
-  if(gameState["player"]==1) {
-    gameState["player"] = 2;
-    gameState[cell] = "X"
-  } else {
-    gameState["player"] = 1
-    gameState[cell] = "O"
+  if(gameState[cell]=="") {
+      if(gameState["player"]==1) {
+      gameState["player"] = 2;
+      gameState[cell] = "X"
+      gameState["playerName"] = "Opponent's Turn!"
+    } else {
+      gameState["player"] = 1
+      gameState[cell] = "O"
+      gameState["playerName"] = "Your Turn!"
+    }
   }
-
 }
+
 
 
 function setup() {
 
   $(".game-board-top-left").click(function() {
-    update(gameState["player"],"game-board-top-left");
+    update("game-board-top-left");
     draw(gameState);
   });
   $(".game-board-top-middle").click(function() {
-    update(gameState["player"],"game-board-top-middle");
+    update("game-board-top-middle");
     draw(gameState);
   });
   $(".game-board-top-right").click(function() {
-    update(gameState["player"],"game-board-top-right");
+    update("game-board-top-right");
     draw(gameState);
   });
   $(".game-board-middle-left").click(function() {
-    update(gameState["player"],"game-board-middle-left");
+    update("game-board-middle-left");
     draw(gameState);
   });
   $(".game-board-center").click(function() {
-    update(gameState["player"],"game-board-center");
+    update("game-board-center");
     draw(gameState);
   });
   $(".game-board-middle-right").click(function() {
-    update(gameState["player"],"game-board-middle-right");
+    update("game-board-middle-right");
     draw(gameState);
   });
   $(".game-board-bottom-left").click(function() {
-    update(gameState["player"],"game-board-bottom-left");
+    update("game-board-bottom-left");
     draw(gameState);
   });
   $(".game-board-bottom-middle").click(function() {
-    update(gameState["player"],"game-board-bottom-middle");
+    update("game-board-bottom-middle");
     draw(gameState);
   });
   $(".game-board-bottom-right").click(function() {
-    update(gameState["player"],"game-board-bottom-right");
+    update("game-board-bottom-right");
     draw(gameState);
   });
 
@@ -122,4 +128,5 @@ function setup() {
 // IGNORE
 $(document).ready(function() {
   setup();
+  draw();
 });
