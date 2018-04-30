@@ -9,27 +9,35 @@
  * game status
  */
 
+
+ console.log("helllloooo)");
+
  var gameState = {
    "player":1,
-   "game-board-top-left" : "",
-   "game-board-top-middle" : "",
-   "game-board-top-right" : "",
-   "game-board-middle-left" : "",
-   "game-board-center" : "",
-   "game-board-middle-right" : "",
-   "game-board-bottom-left" : "",
-   "game-board-bottom-middle" : "",
-   "game-board-bottom-right" : "",
+   "board": [[],[],[]],
    "playerName":"Your Turn!",
    "remainingXPiece":5,
    "remainingOPiece":5
  }
 
+ var index = 0;
+ console.log("tst");
+ while(index < 3) {
+   var j = 0;
+   console.log("1");
+    while(j<3) {
+      gameState["board"][index][j] = ""
+      j+=1;
+      console.log("2");
+    }
+    index+=1;
+ }
+ debugger;
  
 
 
 function draw(currentGame) {
-  $(".game-board-top-left").text(gameState["game-board-top-left"])
+  $(".game-board-top-left").text(gameState["board"][0][0])
   $(".game-board-top-middle").text(gameState["game-board-top-middle"])
   $(".game-board-top-right").text(gameState["game-board-top-right"])
   $(".game-board-middle-left").text(gameState["game-board-middle-left"])
@@ -73,18 +81,18 @@ function draw(currentGame) {
 <td class="game-board-bottom-right"></td>
 </tr> */
 
-function update(cell){
+function update(r,c){
   //1. update the board state to be the correct piece
   //2. change the player
-  if(gameState[cell]=="") {
+  if(gameState["board"][r][c]=="") {
       if(gameState["player"]==1) {
       gameState["player"] = 2;
-      gameState[cell] = "X"
+      gameState["board"][r][c] = "X"
       gameState["playerName"] = "Opponent's Turn!"
       gameState["remainingXPiece"] = gameState["remainingXPiece"] - 1
     } else {
       gameState["player"] = 1
-      gameState[cell] = "O"
+      gameState["board"][r][c] = "O"
       gameState["playerName"] = "Your Turn!"
       gameState["remainingOPiece"] = gameState["remainingOPiece"] - 1
     }
@@ -96,7 +104,7 @@ function update(cell){
 function setup() {
 
   $(".game-board-top-left").click(function() {
-    update("game-board-top-left");
+    update(0,0);
     draw(gameState);
   });
   $(".game-board-top-middle").click(function() {
