@@ -12,6 +12,8 @@ body {
 
 .player-pieces {
     padding-top: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
     text-align: center;
     font-size: 64pt;
     color: white;

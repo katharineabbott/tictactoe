@@ -27,6 +27,89 @@
     index+=1;
  }
  
+ function isWin(r,c) {
+  var lastPiecePlayed = gameState["board"][r][c]
+  // Vertical
+  if(r == 0) {
+    if(gameState["board"][r+1][c] == lastPiecePlayed && gameState["board"][r+2][c] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if(r == 1) {
+    if(gameState["board"][r+1][c] == lastPiecePlayed && gameState["board"][r-1][c] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if(r == 2) {
+    if(gameState["board"][r-1][c] == lastPiecePlayed && gameState["board"][r-2][c] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if(c == 0) {
+    if(gameState["board"][r][c+1] == lastPiecePlayed && gameState["board"][r][c+2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if(c == 1) {
+    if(gameState["board"][r][c+1] == lastPiecePlayed && gameState["board"][r][c-1] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if(c == 2) {
+    if(gameState["board"][r][c-1] == lastPiecePlayed && gameState["board"][r][c-2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if (r == 0 && c == 0) {
+    if(gameState["board"][r+1][c+1] == lastPiecePlayed && gameState["board"][r+2][c+2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if (r == 2 && c == 0) {
+    if(gameState["board"][r-1][c+1] == lastPiecePlayed && gameState["board"][r-2][c+2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if (r == 2 && c == 2) {
+    if(gameState["board"][r-1][c-1] == lastPiecePlayed && gameState["board"][r-2][c-2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+  
+  if (r == 0 && c == 2) {
+    if(gameState["board"][r+1][c-1] == lastPiecePlayed && gameState["board"][r+2][c-2] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  if (r == 1 && c == 1) {
+    if(gameState["board"][r-1][c-1] == lastPiecePlayed && gameState["board"][r+1][c+1] == lastPiecePlayed) {
+      return true;
+    }
+
+    if(gameState["board"][r+1][c-1] == lastPiecePlayed && gameState["board"][r-1][c+1] == lastPiecePlayed) {
+      return true;
+    }
+  }
+
+  return false;
+
+ }
+
+// [
+//  0: [0, 1, 2]
+//  1: [0, 1, 2]
+//  2: [0, 1, 2]
+
+// ]
 
 
 function draw(currentGame) {
@@ -57,25 +140,12 @@ function draw(currentGame) {
   
 }
 
-/* <tr>
-<td class="game-board-top-left"></td>
-<td class="game-board-top-middle"></td>
-<td class="game-board-top-right"></td>
-</tr>
-<tr>
-<td class="game-board-middle-left"></td>
-<td class="game-board-center"></td>
-<td class="game-board-middle-right"></td>
-</tr>
-<tr>
-<td class="game-board-bottom-left"></td>
-<td class="game-board-bottom-middle"></td>
-<td class="game-board-bottom-right"></td>
-</tr> */
+
 
 function update(r,c){
   //1. update the board state to be the correct piece
   //2. change the player
+
   if(gameState["board"][r][c]=="") {
       if(gameState["player"]==1) {
       gameState["player"] = 2;
@@ -88,6 +158,10 @@ function update(r,c){
       gameState["playerName"] = "Your Turn!"
       gameState["remainingOPiece"] = gameState["remainingOPiece"] - 1
     }
+  }
+
+  if(isWin(r,c)) {
+    alert("Somebody has won");
   }
 }
 
@@ -132,7 +206,6 @@ function setup() {
     draw(gameState);
   });
 
-  
 }
 
 
