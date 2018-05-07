@@ -14,7 +14,9 @@
    "board": [[],[],[]],
    "playerName":"Your Turn!",
    "remainingXPiece":5,
-   "remainingOPiece":5
+   "remainingOPiece":5,
+   "scoreX":0,
+   "scoreY":0
  }
 
  var index = 0;
@@ -123,6 +125,8 @@ function draw(currentGame) {
   $(".game-board-bottom-middle").text(gameState["board"][2][1])
   $(".game-board-bottom-right").text(gameState["board"][2][2])
   $(".player-turn").text(gameState["playerName"])
+  $(".score-x").text(gameState["scoreX"])
+  $(".score-y").text(gameState["scoreY"])
 
   var xPieceValue = gameState["remainingXPiece"]
   $(".x-pieces").html("")
@@ -161,10 +165,33 @@ function update(r,c){
   }
 
   if(isWin(r,c)) {
-    alert("Somebody has won");
+    alert("Winner!");
+    if(gameState["player"]==2) {
+      gameState["scoreX"] = gameState["scoreX"] + 1
+    } 
+    if(gameState["player"]==1) {
+      gameState["scoreY"] = gameState["scoreY"] + 1
+    }
+    reset();
   }
 }
 
+function reset() {
+  gameState["player"] = 1;
+  gameState["board"] = [[],[],[]];
+  gameState["remainingXPiece"] = 5;
+  gameState["remainingOPiece"] = 5;
+  gameState["playerName"] = "Your Turn!";
+  var index = 0;
+  while(index < 3) {
+    var j = 0;
+     while(j<3) {
+       gameState["board"][index][j] = ""
+       j+=1;
+     }
+     index+=1;
+  } 
+}
 
 
 function setup() {
@@ -205,7 +232,12 @@ function setup() {
     update(2,2);
     draw(gameState);
   });
-
+  $(".button").click(function() {
+    gameState["scoreX"] = 0;
+    gameState["scoreY"] = 0;
+    reset();
+    draw(gameState);
+  });
 }
 
 
